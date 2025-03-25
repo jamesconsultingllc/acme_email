@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  acme-email-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mount local directories for persistent certificate and key storage
+      - ./letsencrypt:/etc/letsencrypt
+      - ./letsencrypt-lib:/var/lib/letsencrypt
+      - ./letsencrypt-log:/var/log/letsencrypt
+      # If you want to bind mount your own configuration
+      # - ./config:/app/config
+    # You can override the command here or pass it when running
+    # command: cert -e your-email@domain.com [other-options]
+    # For Windows compatibility
+    init: true
+    # Set the container name to something descriptive
+    container_name: acme-email-client
+    # Windows-specific settings
+    environment:
+      - COMPOSE_CONVERT_WINDOWS_PATHS=1 
