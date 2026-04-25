@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+
+# Certbot/letsencrypt working dirs (used by docker-run + local runs)
+letsencrypt/
+letsencrypt-lib/
+letsencrypt-log/
+
+# Repo-local Copilot CLI state — track only the shared config; ignore per-dev runtime state.
+.copilot/*
+!.copilot/mcp-config.json

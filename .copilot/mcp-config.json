@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "msft_learn": {
+      "tools": ["*"],
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp",
+      "headers": {}
+    }
+  }
+}

@@ -19,6 +19,17 @@ There is currently **no test suite, linter config, or CI workflow** in this repo
 python cli.py cert -t --dry-run -e you@example.com --contact you@example.com
 ```
 
+### Copilot CLI in this repo
+
+Launch the CLI via the repo wrapper, not bare `copilot`, so all contributors share the same MCP servers (defined in `.copilot/mcp-config.json`):
+
+```powershell
+.\copilot.ps1     # Windows
+./copilot.sh      # macOS/Linux
+```
+
+The wrapper sets `COPILOT_HOME` to `<repo>/.copilot`. Only `mcp-config.json` is committed; everything else under `.copilot/` (sessions, logs, plugins) is git-ignored per-dev state.
+
 ## Architecture — the workaround that drives everything
 
 Certbot upstream only supports `dns` identifier types in CSRs, but RFC 8823 requires `email` identifiers. The whole codebase is structured around bypassing that limitation:
